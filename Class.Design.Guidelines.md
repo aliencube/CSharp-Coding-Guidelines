@@ -35,7 +35,7 @@ Static classes very often lead to badly designed code, except implementing exten
 ![NOTE](imgs/note.png) If you really need a static class, mark it as `static` so that the compiler can prevent the class and its members from instantiating. This relieves you of creating an explicit private constructor.
 
 
-## Don't hide inherited members with the new keyword ![](imgs/must.png) ##
+## Don't hide inherited members with the `new` keyword ![](imgs/must.png) ##
 
 Not only does the new keyword break [Polymorphism](http://en.wikipedia.org/wiki/Polymorphism_in_object-oriented_programming), one of the most essential object-orientation principles, it also makes subclasses more difficult to understand. Consider the following two classes:
 

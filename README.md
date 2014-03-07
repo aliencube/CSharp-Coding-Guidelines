@@ -52,6 +52,21 @@ Developers are not forced to comply with this guidelines. However, they are enco
 ![NOTE](imgs/note.png) The terms &ndash; `must`, `should` and `may` &ndash; are defined in [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt)
 
 
+# Table of Contents #
+
+* [Class Design Guidelines](Class.Design.Guidelines.md)
+* [Member Design Guidelines](Member.Design.Guidelines.md)
+* [Miscellaneous Design Guidelines](Miscellaneous.Design.Guidelines.md)
+* [Maintainability Guidelines](Maintainability.Guidelines.md)
+* [Naming Guidelines](Naming.Guidelines.md)
+* [Performance Guidelines](Performance.Guidelines.md)
+* [Framework Guidelines](Framework.Guidelines.md)
+* [Documentation Guidelines](Documentation.Guidelines.md)
+* [Layout Guidelines](Layout.Guidelines.md)
+* [Important Resources](Important.Guidelines.md)
+
+
+
 # License #
 
 This is released under **New BSD License** as its original distributor does.

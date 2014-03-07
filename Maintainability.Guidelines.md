@@ -449,12 +449,12 @@ Person person = new Person
 If you end up with a method with more than three parameters, use a structure or class for passing multiple arguments such as explained in the [Specification](http://en.wikipedia.org/wiki/Specification_pattern) design pattern. In general, the fewer the number of parameters, the easier it is to understand the method. Additionally, unit testing a method with many parameters requires many scenarios to test.
 
 
-## Don't use ref or out parameters ![](imgs/must.png) ##
+## Don't use `ref` or `out` parameters ![](imgs/must.png) ##
 
 They make code less understandable and might cause people to introduce bugs. Prefer returning compound objects instead.
 
 
-## Avoid methods that take a bool flag ![](imgs/should.png) ##
+## Avoid methods that take a `bool` flag ![](imgs/should.png) ##
 
 Consider the following method signature:
 

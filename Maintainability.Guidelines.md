@@ -298,7 +298,7 @@ void Foo(string answer)
 
 ## Be reluctant with multiple return statements ![](imgs/should.png) ##
 
-One entry, one exit is a sound principle and keeps control flow readable. However, if the method is very small and complies with [this guideline](#do-not-exceed-7-statements) then multiple return statements may actually improve readability over some central boolean flag that is updated at various points.
+One entry, one exit is a sound principle and keeps control flow readable. However, if the method is very small and complies with [this guideline](#methods-does-not-exceed-7-statements-) then multiple return statements may actually improve readability over some central boolean flag that is updated at various points.
 
 
 ## Don't use if-else statements instead of a simple (conditional) assignment ![](imgs/should.png) ##
@@ -412,7 +412,7 @@ The class `MyString` provides three overloads for the `IndexOf` method, but two 
 
 ## Only use optional arguments to replace overloads ![](imgs/must.png) ##
 
-The only valid reason for using C# 4.0's optional arguments is to replace the example from [this guideline](#call-the-most-overloaded-method-from-other-overloads) with a single method like:
+The only valid reason for using C# 4.0's optional arguments is to replace the example from [this guideline](#call-the-most-overloaded-method-from-other-overloads-) with a single method like:
 
 ```c#
 public virtual int IndexOf(string phrase, int startIndex = 0, int count = 0)

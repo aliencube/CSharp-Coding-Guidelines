@@ -298,7 +298,7 @@ void Foo(string answer)
 
 ## Be reluctant with multiple return statements ![](imgs/should.png) ##
 
-One entry, one exit is a sound principle and keeps control flow readable. However, if the method is very small and complies with [this guideline](#methods-does-not-exceed-7-statements-) then multiple return statements may actually improve readability over some central boolean flag that is updated at various points.
+One entry, one exit is a sound principle and keeps control flow readable. However, if the method is very small and complies with [this guideline](Maintainability.Guidelines.md#methods-does-not-exceed-7-statements-) then multiple return statements may actually improve readability over some central boolean flag that is updated at various points.
 
 
 ## Don't use if-else statements instead of a simple (conditional) assignment ![](imgs/should.png) ##
@@ -412,7 +412,7 @@ The class `MyString` provides three overloads for the `IndexOf` method, but two 
 
 ## Only use optional arguments to replace overloads ![](imgs/must.png) ##
 
-The only valid reason for using C# 4.0's optional arguments is to replace the example from [this guideline](#call-the-most-overloaded-method-from-other-overloads-) with a single method like:
+The only valid reason for using C# 4.0's optional arguments is to replace the example from [this guideline](Maintainability.Guidelines.md#call-the-most-overloaded-method-from-other-overloads-) with a single method like:
 
 ```c#
 public virtual int IndexOf(string phrase, int startIndex = 0, int count = 0)
@@ -421,8 +421,67 @@ public virtual int IndexOf(string phrase, int startIndex = 0, int count = 0)
 }
 ```
 
-If the optional parameter is a reference type then it can only have a default value of null. But since strings, lists and collections should never be null according to rule AV1235, you must use overloaded methods instead.
+If the optional parameter is a reference type then it can only have a default value of null. But since strings, lists and collections should never be null according to [this rule](Miscellaneous.Design.Guidelines.md#dont-pass-null-as-the-sender-argument-when-raising-an-event-), you must use overloaded methods instead.
 
 ![NOTE](/imgs/note.png) The default values of the optional parameters are stored at the caller side. As such, changing the default value without recompiling the calling code will not apply the new default value properly.
 
-![NOTE](/imgs/note.png) When an interface method defines an optional parameter, its default value is not considered during overload resolution unless you call the concrete class through the interface reference. See this post by Eric Lippert for more details.
+![NOTE](/imgs/note.png) When an interface method defines an optional parameter, its default value is not considered during overload resolution unless you call the concrete class through the interface reference. See [this post](http://blogs.msdn.com/b/ericlippert/archive/2011/05/09/optional-argument-corner-cases-part-one.aspx) by Eric Lippert for more details.
+
+
+## Avoid using named arguments ![](imgs/must.png) ##
+
+C# 4.0's named arguments have been introduced to make it easier to call COM components that are known for offering tons of optional parameters. If you need named arguments to improve the readability of the call to a method, that method is probably doing too much and should be refactored.
+
+The only exception where named arguments improve readability is when a constructor that yields a valid object is called like this:
+
+```c#
+Person person = new Person
+                (
+                    firstName: "John", 
+                    lastName: "Smith", 
+                    dateOfBirth: new DateTime(1970, 1, 1)
+                );
+```
+
+
+## Don't allow methods and constructors with more than three parameters ![](imgs/must.png) ##
+
+If you end up with a method with more than three parameters, use a structure or class for passing multiple arguments such as explained in the [Specification](http://en.wikipedia.org/wiki/Specification_pattern) design pattern. In general, the fewer the number of parameters, the easier it is to understand the method. Additionally, unit testing a method with many parameters requires many scenarios to test.
+
+
+## Don't use ref or out parameters ![](imgs/must.png) ##
+
+They make code less understandable and might cause people to introduce bugs. Prefer returning compound objects instead.
+
+
+## Avoid methods that take a bool flag ![](imgs/should.png) ##
+
+Consider the following method signature:
+
+```c#
+public Customer CreateCustomer(bool platinumLevel) {}
+```
+
+On first sight this signature seems perfectly fine, but when calling this method you will lose this purpose completely:
+
+```c#
+Customer customer = CreateCustomer(true);
+```
+
+Often, a method taking such a flag is doing more than one thing and needs to be refactored into two or more methods. An alternative solution is to replace the flag with an enumeration. 
+
+
+## Don't use parameters as temporary variables ![](imgs/may.png) ##
+
+Never use a parameter as a convenient variable for storing temporary state. Even though the type of your temporary variable may be the same, the name usually does not reflect the purpose of the temporary variable.
+
+
+## Always check the result of an as operation ![](imgs/must.png) ##
+
+If you use as to obtain a certain interface reference from an object, always ensure that this operation does not return `null`. Failure to do so may cause a `NullReferenceException` at a much later stage if the object did not implement that interface.
+
+
+## Don't comment out code ![](imgs/must.png) ##
+
+Never check-in code that is commented-out, but instead use a work item tracking system to keep track of some work to be done. Nobody knows what to do when they encounter a block of commented-out code. Was it temporarily disabled for testing purposes? Was it copied as an example? Should I delete it? 
+

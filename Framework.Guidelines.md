@@ -1,6 +1,6 @@
 # Framework Guidelines #
 
-## Use C# type aliases instead of the types from the System namespace ![](imgs/must.png) ##
+## Use C# type aliases instead of the types from the `System` namespace ![](imgs/must.png) ##
 
 For instance, use `object` instead of `Object`, `string` instead of `String`, and `int` instead of `Int32`. These aliases have been introduced to make the primitive types a first class citizen of the C# language so use them accordingly.
 

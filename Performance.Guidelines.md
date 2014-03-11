@@ -19,10 +19,7 @@ If you do need to execute a CPU bound operation, use `Task.Run` to offload the w
 
 ## Beware of mixing up `await`/`async` with `Task.Wait` ##
 
-`await` will not block the current thread but simply instruct to compiler to generate a state-machine. However, `Task.Wait` will block the thread and may even cause dead-locks[^1].
-
-
-[^1]: [Beware of async/await deadlocks in single-threaded environments](Performance.Guidelines.md#beware-of-async-await-deadlocks-in-single-threaded-environments)
+`await` will not block the current thread but simply instruct to compiler to generate a state-machine. However, `Task.Wait` will block the thread and may even cause dead-locks (See [Beware of async/await deadlocks in single-threaded environments](Performance.Guidelines.md#beware-of-async-await-deadlocks-in-single-threaded-environments)).
 
 
 ## Beware of `async`/`await` deadlocks in single-threaded environments ##

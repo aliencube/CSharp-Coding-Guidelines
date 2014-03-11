@@ -1,11 +1,10 @@
 # Documentation Guidelines #
 
-## Write comments and documentation in English[^1] ![](imgs/must.png) ##
+## Write comments and documentation in English ![](imgs/must.png) ##
 
 Documents must be written in English (see [here](Naming.Guidelines.md#use-english-)).
 
-
-[^1]: Doomen's original document clearly stated that *Use US-English*. In this document, the *US* part is deliberately omitted.
+![NOTE](imgs/note.png) Doomen's original document clearly stated that *Use US-English*. In this document, the *US* part is deliberately omitted.
 
 
 ## Document all public, protected and internal types and members ![](imgs/should.png) ##

@@ -89,7 +89,7 @@ Maintaining a common order allows other team members to find their way in your c
 8.	Other methods and private properties in calling order
 
 
-## Be reluctant with #regions ![](imgs/must.png) ##
+## Be reluctant with `#region`s ![](imgs/must.png) ##
 
 Regions can be helpful, but can also hide the main purpose of a class. Therefore, use #regions only for:
 

@@ -1,6 +1,6 @@
 # Naming Guidelines #
 
-## Use English[^1] ![](imgs/must.png) ##
+## Use English ![](imgs/must.png) ##
 
 All type members, parameters and variables should be named using words from the English language.
 
@@ -10,7 +10,7 @@ All type members, parameters and variables should be named using words from the 
 
 ![EXCEPTION](imgs/exception.png) In most projects, you will use words and phrases from your domain and names specific to your company. Visual Studio's **Static Code Analysis** will perform a spelling check on all code, so you may need to add those terms to a [Custom Code Analysis Dictionary](http://blogs.msdn.com/b/codeanalysis/archive/2007/08/20/new-for-visual-studio-2008-custom-dictionaries.aspx).
 
-[^1]: Doomen's original document clearly stated that *Use US-English*. In this document, the *US* part is deliberately omitted.
+![NOTE](imgs/note.png) Doomen's original document clearly stated that *Use US-English*. In this document, the *US* part is deliberately omitted.
 
 
 ## Use proper casing for language elements ![](imgs/must.png) ##
@@ -63,9 +63,7 @@ For example, use `OnButtonClick` rather than `OnBtnClick`. Avoid single characte
 
 Bad examples include `SearchExamination` (a page for searching for examinations), `Common` (does not end with a noun, and does not explain its purpose) and `SiteSecurity` (although the name is technically okay, it does not say anything about its purpose). Good examples include `BusinessBinder`, `SmartTextBox`, or `EditableSingleCustomer`.
 
-Don't include terms like `Utility` or `Helper` in classes. Classes with a name like that are usually static classes and are introduced without considering the object-oriented principles[^2].
-
-[^2]: [Avoid static classes](Class.Design.Guidelines.md#avoid-static-classes-)
+Don't include terms like `Utility` or `Helper` in classes. Classes with a name like that are usually static classes and are introduced without considering the object-oriented principles (See [Avoid static classes](Class.Design.Guidelines.md#avoid-static-classes-)).
 
 
 ## Name generic type parameters with descriptive names ![](imgs/should.png) ##

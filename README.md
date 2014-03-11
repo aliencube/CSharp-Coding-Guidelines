@@ -52,6 +52,35 @@ Developers are not forced to comply with this guidelines. However, they are enco
 ![NOTE](imgs/note.png) The terms &ndash; `must`, `should` and `may` &ndash; are defined in [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt)
 
 
+# Usefule Resources #
+
+In addition to the many links provided throughout this document, the following books, articles and sites for everyone insterested in software quality are recommended:
+
+* [Code Complete: A Practical Handbook of Software Construction](http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670) (Steve McConnel)
+
+One of the best books I've ever read. It deals with all aspects of software development, and even though the book was originally written in 2004, but you'll be surprised when you see how accurate it still is. I wrote a review in 2009 if you want to get a sense of its contents.
+
+* [The Art of Agile Development](http://www.amazon.com/Art-Agile-Development-James-Shore/dp/0596527675) (James Shore)
+
+Another great all-encompassing trip through the many practices preached by processes like Scrum and Extreme Programming. If you're looking for a quick introduction with a pragmatic touch, make sure you read James' book.
+
+* [Applying Domain Driven-Design and Patterns: With Examples in C# and .NET](http://www.amazon.com/Applying-Domain-Driven-Design-Patterns-Examples/dp/0321268202) (Jimmy Nilsson)
+
+The book that started my interest for both Domain Driven Design and Test Driven Development. It's one of those books that I wished I had read a few years earlier. It would have saved me from many mistakes.
+
+* [Jeremy D. Miller's Blog](http://codebetter.com/blogs/jeremy.miller)
+
+Although he is not that active anymore, in the last couple of years he has written some excellent blog posts on Test Driven Development, Design Patterns and design principles. I've learned a lot from his real-life and practical insights.
+
+* [LINQ Framework Design Guidelines](http://blogs.msdn.com/b/mirceat/archive/2008/03/13/linq-framework-design-guidelines.aspx)
+
+A set of rules and recommendations that you should adhere to when creating your own implementations of `IQueryable<T>`.
+
+* [Best Practices for c# `async`/`await`](http://code.jonwagner.com/2012/09/06/best-practices-for-c-asyncawait/)
+
+The rationale and source of several of the new guidelines in this documented, written by [Jon Wagner](https://twitter.com/jonwagnerdotcom).
+
+
 # Table of Contents #
 
 * [Class Design Guidelines](Class.Design.Guidelines.md)
@@ -63,8 +92,6 @@ Developers are not forced to comply with this guidelines. However, they are enco
 * [Framework Guidelines](Framework.Guidelines.md)
 * [Documentation Guidelines](Documentation.Guidelines.md)
 * [Layout Guidelines](Layout.Guidelines.md)
-* [Important Resources](Important.Guidelines.md)
-
 
 
 # License #

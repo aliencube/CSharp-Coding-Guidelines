@@ -52,13 +52,13 @@ Developers are not forced to comply with this guidelines. However, they are enco
 ![NOTE](imgs/note.png) The terms &ndash; `must`, `should` and `may` &ndash; are defined in [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt)
 
 
-# Usefule Resources #
+# Useful Resources #
 
-In addition to the many links provided throughout this document, the following books, articles and sites for everyone insterested in software quality are recommended:
+In addition to the many links provided throughout this document, the following books, articles and sites for everyone interested in software quality are recommended:
 
 * [Code Complete: A Practical Handbook of Software Construction](http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670) (Steve McConnel)
 
-One of the best books I've ever read. It deals with all aspects of software development, and even though the book was originally written in 2004, but you'll be surprised when you see how accurate it still is. I wrote a review in 2009 if you want to get a sense of its contents.
+It deals with all aspects of software development, and even though the book was originally written in 2004, but you'll be surprised when you see how accurate it still is. I wrote a review in 2009 if you want to get a sense of its contents.
 
 * [The Art of Agile Development](http://www.amazon.com/Art-Agile-Development-James-Shore/dp/0596527675) (James Shore)
 

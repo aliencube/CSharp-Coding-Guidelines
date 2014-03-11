@@ -144,7 +144,7 @@ In all of three above examples it is clear what type to expect. For a more detai
 Avoid the C and Visual Basic styles where all variables have to be defined at the beginning of a block, but rather define and initialize each variable at the point where it is needed.
 
 
-## Assign each variable in a separate statement ![must.png] ##
+## Assign each variable in a separate statement ![](imgs/must.png) ##
 
 Don't use confusing constructs like the one below.
 
@@ -153,7 +153,7 @@ var result = someField = GetSomeMethod();
 ```
 
 
-## Favor Object and Collection Initializers over separate statements ![](imgs/should.png) ##
+## Favour Object and Collection Initialisers over separate statements ![](imgs/should.png) ##
 
 Avoid
 
@@ -163,14 +163,14 @@ startInfo.StandardOutput = Console.Output;
 startInfo.UseShellExecute = true;
 ```
 
-Instead, use [Object Initializers](http://msdn.microsoft.com/en-us/library/bb384062.aspx).
+Instead, use [Object Initialisers](http://msdn.microsoft.com/en-us/library/bb384062.aspx).
 
 ```c#
-var startInfo = new ProcessStartInfo(“myapp.exe”)
-                    {
-                        StandardOutput = Console.Output,
-                        UseShellExecute = true
-                    };
+var startInfo = new ProcessStartInfo("myapp.exe")
+                {
+                    StandardOutput = Console.Output,
+                    UseShellExecute = true
+                };
 ```
 
 
@@ -182,7 +182,7 @@ countries.Add("Netherlands");
 countries.Add("United States");
 ```
 
-Use collection or [dictionary initializers](http://msdn.microsoft.com/en-us/library/bb531208.aspx).
+Use collection or [dictionary initialisers](http://msdn.microsoft.com/en-us/library/bb531208.aspx).
 
 ```c#
 var countries = new List<string>
@@ -301,7 +301,7 @@ void Foo(string answer)
 One entry, one exit is a sound principle and keeps control flow readable. However, if the method is very small and complies with [this guideline](Maintainability.Guidelines.md#methods-does-not-exceed-7-statements-) then multiple return statements may actually improve readability over some central boolean flag that is updated at various points.
 
 
-## Don't use if-else statements instead of a simple (conditional) assignment ![](imgs/should.png) ##
+## Don't use `if`-`else` statements instead of a simple (conditional) assignment ![](imgs/should.png) ##
 
 Express your intentions directly. For example:
 
@@ -318,7 +318,7 @@ else
 }
 
 // Preferred practice
-bool pos = (val > 0); // initialization
+bool pos = (val > 0); // initialisation
 ```
 
 Or this can be another alternative:
@@ -332,12 +332,12 @@ if (someString != null)
 }
 else
 {
-    result = “Unavailable”;
+    result = "Unavailable";
 }
 return result;
 
 // Instead
-return someString ?? “Unavailable”;
+return someString ?? "Unavailable";
 ```
 
 
@@ -352,7 +352,7 @@ if (member.HidesBaseClassMember && (member.NodeType != NodeType.InstanceInitiali
 }
 ```
 
-In order to understand what this expression is about, you need to analyze its exact details and all the possible outcomes. Obviously, you could add an explanatory comment on top of it, but it is much better to replace this complex expression with a clearly named method like:
+In order to understand what this expression is about, you need to analyse its exact details and all the possible outcomes. Obviously, you could add an explanatory comment on top of it, but it is much better to replace this complex expression with a clearly named method like:
 
 ```c#
 if (NonConstructorMemberUsesNewKeyword(member))
@@ -421,7 +421,7 @@ public virtual int IndexOf(string phrase, int startIndex = 0, int count = 0)
 }
 ```
 
-If the optional parameter is a reference type then it can only have a default value of null. But since strings, lists and collections should never be null according to [this rule](Miscellaneous.Design.Guidelines.md#dont-pass-null-as-the-sender-argument-when-raising-an-event-), you must use overloaded methods instead.
+If the optional parameter is a reference type then it can only have a default value of `null`. But since strings, lists and collections should never be `null` according to [this rule](Miscellaneous.Design.Guidelines.md#dont-pass-null-as-the-sender-argument-when-raising-an-event-), you must use overloaded methods instead.
 
 ![NOTE](/imgs/note.png) The default values of the optional parameters are stored at the caller side. As such, changing the default value without recompiling the calling code will not apply the new default value properly.
 

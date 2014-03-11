@@ -7,9 +7,9 @@ For instance, use `object` instead of `Object`, `string` instead of `String`, an
 ![EXCEPTION](imgs/exception.png) When referring to static members of those types, it is custom to use the full CLS name, eg) `Int32.Parse()` instead of `int.Parse()`.
 
 
-## Properly name properties, variables or fields referring to localized resources ![](imgs/may.png) ##
+## Properly name properties, variables or fields referring to localised resources ![](imgs/may.png) ##
 
-The guidelines in this topic apply to localizable resources such as error messages and menu text.
+The guidelines in this topic apply to localisable resources such as error messages and menu text.
 
 * Use Pascal casing in resource keys.
 * Provide descriptive rather than short identifiers. Keep them concise where possible, but don't sacrifice readability.
@@ -79,7 +79,7 @@ The dynamic keyword has been introduced for working with dynamic languages. Usin
 Use it only for calling methods or members of a dynamically created instance (using the `Activator`) class as an alternative to `Type.GetProperty()` and `Type.GetMethod()`, or for working with COM Interop types.
 
 
-## Favor `async`/`await` over the Task ##
+## Favour `async`/`await` over the Task ##
 
 Using the new C# 5.0 keywords results in code that can still be read sequentially and also improves maintainability a lot, even if you need to chain multiple asynchronous operations. For example, rather than defining your method like this:
 

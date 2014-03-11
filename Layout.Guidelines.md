@@ -13,7 +13,7 @@ if (condition == null)
 * Add a whitespace around operators, like `+`, `-`, `==`, etc.
 * Always succeed the keywords `if`, `else`, `do`, `while`, `for` and `foreach`, with opening and closing parentheses, even though the language does not require it.
 * Always put opening and closing parentheses on a new line.
-* Indent object Initializers and initialize each property on a new line, so use a format like this: 
+* Indent object Initialisers and initialise each property on a new line, so use a format like this: 
 
 ```c#
 var dto = new ConsumerDto()

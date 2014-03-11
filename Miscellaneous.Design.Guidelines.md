@@ -28,7 +28,7 @@ When throwing or handling exceptions in code that uses `async`/`await` or a `Tas
 * Exceptions that occur in the code preceding the asynchronous block are propagated to the caller.
 
 
-## Always check an event handler delegate for null ![](imgs/must.png) ##
+## Always check an event handler delegate for `null` ![](imgs/must.png) ##
 
 An event that has no subscribers is `null`, so before invoking, always make sure that the delegate list represented by the event variable is not `null`. Furthermore, to prevent conflicting changes from concurrent threads, use a temporary variable to prevent concurrent changes to the delegate.
 

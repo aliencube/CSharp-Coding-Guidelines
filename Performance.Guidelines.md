@@ -9,7 +9,7 @@ When a method or other member returns an `IEnumerable<T>` or other collection cl
 
 ## Only use async for low-intensive long-running activities ##
 
-The usage of `async` won't automagically run something on a worker thread like `Task.Run` does. It just adds the necessary logic to allow releasing the current thread and marshal the result back on that same thread if a long-running asynchronies operation has completed. In other words, use `async` only for I/O bound operations. 
+The usage of `async` won't automatically run something on a worker thread like `Task.Run` does. It just adds the necessary logic to allow releasing the current thread and marshal the result back on that same thread if a long-running asynchronous operation has completed. In other words, use `async` only for I/O bound operations. 
 
 
 ## Prefer Task.Run for CPU intensive activities ##
@@ -45,5 +45,5 @@ public ActionResult ActionAsync()
 }
 ```
 
-You'll end up with a deadlock. Why? Because the `Result` property getter will block until the `async` operation has completed, but since an `async` method will automatically marshal the result back to the original thread and ASP.NET uses a single-threaded synchronization context, they'll be waiting on each other. A similar problem can also happen on WPF, Silverlight or a Windows Store C#/XAML app. Read more about this [here](http://blogs.msdn.com/b/pfxteam/archive/2011/01/13/10115163.aspx).
+You'll end up with a deadlock. Why? Because the `Result` property getter will block until the `async` operation has completed, but since an `async` method will automatically marshal the result back to the original thread and ASP.NET uses a single-threaded synchronisation context, they'll be waiting on each other. A similar problem can also happen on WPF, Silverlight or a Windows Store C#/XAML app. Read more about this [here](http://blogs.msdn.com/b/pfxteam/archive/2011/01/13/10115163.aspx).
 

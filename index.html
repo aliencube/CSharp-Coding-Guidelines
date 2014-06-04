@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>C# Coding Guidelines by aliencube</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>C# Coding Guidelines</h1>
+        <p>Markdown Version of C# Coding Guidelines (http://csharpguidelines.codeplex.com) Originally Written by Dennis Doomen (http://dennisdoomen.net)</p>
+
+        <p class="view"><a href="https://github.com/aliencube/CSharp-Coding-Guidelines">View the Project on GitHub <small>aliencube/CSharp-Coding-Guidelines</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/aliencube/CSharp-Coding-Guidelines/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/aliencube/CSharp-Coding-Guidelines/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/aliencube/CSharp-Coding-Guidelines">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="c-coding-guidelines" class="anchor" href="#c-coding-guidelines"><span class="octicon octicon-link"></span></a>C# Coding Guidelines</h1>
+
+<p>Mar 2014</p>
+
+<h1>
+<a name="about-the-guidelines" class="anchor" href="#about-the-guidelines"><span class="octicon octicon-link"></span></a>About the Guidelines</h1>
+
+<p>The guidelines provide a practical way of developing .NET applications using C# 3.0 or later depending on versions that applications are using. The existing coding guidelines that <strong>Aliencube</strong> have been using were originally written in 2003 by <a href="http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf">Mike Kruger</a>. Many development environments, however, have a lot been evolved from that point of time. This document is based on <a href="http://www.dennisdoomen.net">Dennis Doomen</a>'s <a href="http://csharpguidelines.codeplex.com">C# Coding Guidelines</a> released on <a href="http://csharpguidelines.codeplex.com/releases/view/98254">Nov 26th, 2012</a>.</p>
+
+<h1>
+<a name="history" class="anchor" href="#history"><span class="octicon octicon-link"></span></a>History</h1>
+
+<p>Since Doomen's original document was written in MS-Word and released in PDF, which is hard to be maintainable, I made a decision to use plain markdown format for easy maintenance under the same license he originally set up. In addition to that, I got a permission to translate this into Korean, which will be provided soon.</p>
+
+<h1>
+<a name="rationale" class="anchor" href="#rationale"><span class="octicon octicon-link"></span></a>Rationale</h1>
+
+<p>Coding guidelines are sometimes overlooked since they are considered as putting some unwanted burdens on developers. However, it has already been proved to worth doing because not all developers:</p>
+
+<ul>
+<li>are aware that code is generally read 10 times more than it is changed;</li>
+<li>are aware of the potential pitfalls of certain constructions in C#;</li>
+<li>are introduced into certain conventions when using the .NET Framework such as <code>IDisposable</code> or the deferred execution nature of LINQ;</li>
+<li>are aware of the impact of using (or neglecting to use) particular solutions on aspects like security, performance, multi-language support, etc; and</li>
+<li>know that not every developer is as capable of understanding an elegant, but abstract, solution as the original developer.</li>
+</ul><h1>
+<a name="basic-principles" class="anchor" href="#basic-principles"><span class="octicon octicon-link"></span></a>Basic Principles</h1>
+
+<p>In general, because this document cannot cover everything for each application's purpose, those two documents provided by Microsoft are the main starting points:</p>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/ff926074.aspx">C# Coding Conventions (C# Programming Guide)</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/ms229042.aspx">Framework Design Guidelines</a></li>
+</ul><p>Those principles have already been applied to Visual Studio. So, using the default settings can check most of our coding conventions. <a href="http://www.jetbrains.com/resharper">ReSharper</a> that we are using checks our code in a more robust way so following its default settings would be more efficient.</p>
+
+<p>In addition to them, this document provides guidelines with the following principles:</p>
+
+<ul>
+<li>
+<strong>The Principle of Least Surprise</strong> (or Astonishment) – you should choose a solution that does include any things people might not understand, or put on the wrong track.</li>
+<li>
+<strong>Keep It Simple Stupid</strong> (KISS) – the simplest solution is more than sufficient.</li>
+<li>
+<strong>You Ain't Gonna Need It</strong> (YAGNI) – you should create a solution for the current problem rather than the ones you think will happen later on (since when can you predict the future?).</li>
+<li>
+<strong>Don't Repeat Yourself</strong> (DRY) – you are encouraged to prevent duplication in your code base without forgetting the <a href="http://lostechies.com/derickbailey/2012/10/31/abstraction-the-rule-of-three">Rule of Three</a> heuristic.</li>
+</ul><h1>
+<a name="how-to-apply" class="anchor" href="#how-to-apply"><span class="octicon octicon-link"></span></a>How to Apply</h1>
+
+<p>Developers are not forced to comply with this guidelines. However, they are encouraged to apply those guidelines. Each guideline is clearly labeled like:</p>
+
+<ul>
+<li>
+<img src="imgs/must.png" alt="MUST">: This guideline must be considered for coding.</li>
+<li>
+<img src="imgs/should.png" alt="SHOULD">: This guideline is strongly recommended for coding.</li>
+<li>
+<img src="imgs/may.png" alt="MAY">: This guideline can be applied for coding.</li>
+</ul><p><img src="imgs/note.png" alt="NOTE"> The terms – <code>must</code>, <code>should</code> and <code>may</code> – are defined in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a></p>
+
+<h1>
+<a name="useful-resources" class="anchor" href="#useful-resources"><span class="octicon octicon-link"></span></a>Useful Resources</h1>
+
+<p>In addition to the many links provided throughout this document, the following books, articles and sites for everyone interested in software quality are recommended:</p>
+
+<ul>
+<li>
+<a href="http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete: A Practical Handbook of Software Construction</a> (Steve McConnel)</li>
+</ul><p>It deals with all aspects of software development, and even though the book was originally written in 2004, but you'll be surprised when you see how accurate it still is. I wrote a review in 2009 if you want to get a sense of its contents.</p>
+
+<ul>
+<li>
+<a href="http://www.amazon.com/Art-Agile-Development-James-Shore/dp/0596527675">The Art of Agile Development</a> (James Shore)</li>
+</ul><p>Another great all-encompassing trip through the many practices preached by processes like Scrum and Extreme Programming. If you're looking for a quick introduction with a pragmatic touch, make sure you read James' book.</p>
+
+<ul>
+<li>
+<a href="http://www.amazon.com/Applying-Domain-Driven-Design-Patterns-Examples/dp/0321268202">Applying Domain Driven-Design and Patterns: With Examples in C# and .NET</a> (Jimmy Nilsson)</li>
+</ul><p>The book that started my interest for both Domain Driven Design and Test Driven Development. It's one of those books that I wished I had read a few years earlier. It would have saved me from many mistakes.</p>
+
+<ul>
+<li><a href="http://codebetter.com/blogs/jeremy.miller">Jeremy D. Miller's Blog</a></li>
+</ul><p>Although he is not that active anymore, in the last couple of years he has written some excellent blog posts on Test Driven Development, Design Patterns and design principles. I've learned a lot from his real-life and practical insights.</p>
+
+<ul>
+<li><a href="http://blogs.msdn.com/b/mirceat/archive/2008/03/13/linq-framework-design-guidelines.aspx">LINQ Framework Design Guidelines</a></li>
+</ul><p>A set of rules and recommendations that you should adhere to when creating your own implementations of <code>IQueryable&lt;T&gt;</code>.</p>
+
+<ul>
+<li><a href="http://code.jonwagner.com/2012/09/06/best-practices-for-c-asyncawait/">Best Practices for c# <code>async</code>/<code>await</code></a></li>
+</ul><p>The rationale and source of several of the new guidelines in this documented, written by <a href="https://twitter.com/jonwagnerdotcom">Jon Wagner</a>.</p>
+
+<h1>
+<a name="table-of-contents" class="anchor" href="#table-of-contents"><span class="octicon octicon-link"></span></a>Table of Contents</h1>
+
+<ul>
+<li><a href="Class.Design.Guidelines.md">Class Design Guidelines</a></li>
+<li><a href="Member.Design.Guidelines.md">Member Design Guidelines</a></li>
+<li><a href="Miscellaneous.Design.Guidelines.md">Miscellaneous Design Guidelines</a></li>
+<li><a href="Maintainability.Guidelines.md">Maintainability Guidelines</a></li>
+<li><a href="Naming.Guidelines.md">Naming Guidelines</a></li>
+<li><a href="Performance.Guidelines.md">Performance Guidelines</a></li>
+<li><a href="Framework.Guidelines.md">Framework Guidelines</a></li>
+<li><a href="Documentation.Guidelines.md">Documentation Guidelines</a></li>
+<li><a href="Layout.Guidelines.md">Layout Guidelines</a></li>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>This is released under <strong>New BSD License</strong> as its original distributor does.</p>
+
+<blockquote>
+<p>Copyright (c) 2014, aliencube.org All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+
+<ul>
+<li><p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p></li>
+<li><p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p></li>
+<li><p>Neither the name of the aliencube.org nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p></li>
+</ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+</blockquote>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/aliencube">aliencube</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

@@ -1,8 +1,3 @@
-# C# Coding Guidelines #
-
-Mar 2014
-
-
 # About the Guidelines #
 
 The guidelines provide a practical way of developing .NET applications using C# 3.0 or later depending on versions that applications are using. The existing coding guidelines that **Aliencube** have been using were originally written in 2003 by [Mike Kruger](http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf). Many development environments, however, have a lot been evolved from that point of time. This document is based on [Dennis Doomen](http://www.dennisdoomen.net)'s [C# Coding Guidelines](http://csharpguidelines.codeplex.com) released on [Nov 26th, 2012](http://csharpguidelines.codeplex.com/releases/view/98254).

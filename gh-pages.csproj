@@ -75,6 +75,7 @@
     <Content Include="index.html" />
     <Content Include="js\base64.js" />
     <Content Include="js\base64.min.js" />
+    <Content Include="js\variables.js" />
     <Content Include="js\main.js" />
     <Content Include="js\purl.js" />
     <Content Include="js\vendor\bootstrap.js" />

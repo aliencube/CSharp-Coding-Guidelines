@@ -17,6 +17,12 @@
             var li = $("<li></li>").append($("<a></a>").attr("href", page.page + ".html").text(page.name));
             $("#nav-menu").append(li);
         });
+
+        $("#lang a").click(function () {
+            $.cookie("lang", $(this).attr("href").replace("?lang=", ""));
+            location.reload();
+            return false;
+        });
     });
 
     // Gets the current page.
@@ -29,10 +35,11 @@
     };
 
     // Gets the language from the query string.
-    var getLanguage = function() {
-        var lang = $.url().param("lang");
+    var getLanguage = function () {
+        var lang = $.cookie("lang");
         if (lang == undefined || !lang.length) {
             lang = "en";
+            $.cookie("lang", lang);
         }
         return lang;
     };
@@ -67,14 +74,9 @@
             })
             .done(function(data) {
                 for (var i in pages) {
-                    if (i == 0) {
-                        continue;
-                    }
                     var doc = pages[i].doc;
                     var page = pages[i].page;
-                    data.replace(doc, page + ".html");
-                    console.log(doc + "::" + page);
-                    console.log(data);
+                    data = data.replace(doc, page + ".html");
                 }
                 $("#main-content").html(data);
             });

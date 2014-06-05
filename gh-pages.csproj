@@ -57,8 +57,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="apple-touch-icon-114x114.png" />
+    <Content Include="apple-touch-icon-120x120.png" />
+    <Content Include="apple-touch-icon-144x144.png" />
+    <Content Include="apple-touch-icon-152x152.png" />
+    <Content Include="apple-touch-icon-57x57.png" />
+    <Content Include="apple-touch-icon-72x72.png" />
+    <Content Include="apple-touch-icon-76x76.png" />
     <None Include="CNAME" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="documentation-guidelines.html" />
+    <Content Include="framework-guidelines.html" />
+    <Content Include="imgs\favicon-500x500.png" />
+    <Content Include="performance-guidelines.html" />
+    <Content Include="naming-guidelines.html" />
+    <Content Include="maintainability-guidelines.html" />
+    <Content Include="miscellaneous-design-guidelines.html" />
+    <Content Include="member-design-guidelines.html" />
+    <Content Include="class-design-guidelines.html" />
+    <Content Include="layout-guidelines.html" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -75,6 +92,7 @@
     <Content Include="index.html" />
     <Content Include="js\base64.js" />
     <Content Include="js\base64.min.js" />
+    <Content Include="js\jquery.cookie.js" />
     <Content Include="js\variables.js" />
     <Content Include="js\main.js" />
     <Content Include="js\purl.js" />
@@ -94,6 +112,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="imgs\iconified.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

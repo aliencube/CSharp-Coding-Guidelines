@@ -1,4 +1,4 @@
-# Layout Guidelines #
+# 레이아웃 가이드라인 Layout Guidelines #
 
 ## Use a common layout ![](imgs/must.png) ##
 

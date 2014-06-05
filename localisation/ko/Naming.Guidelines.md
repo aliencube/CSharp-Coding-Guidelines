@@ -1,4 +1,4 @@
-# Naming Guidelines #
+# 네이밍 가이드라인 Naming Guidelines #
 
 ## Use English ![](imgs/must.png) ##
 

@@ -1,4 +1,4 @@
-# Performance Guidelines #
+# 퍼포먼스 가이드라인 Performance Guidelines #
 
 ## Consider using `Any()` to determine whether an `IEnumerable<T>` is empty ![](imgs/may.png) ##
 

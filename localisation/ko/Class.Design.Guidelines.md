@@ -1,4 +1,4 @@
-# Class Design Guidelines #
+# 클라스 설계 가이드라인 Class Design Guidelines #
 
 ## A class or interface should have a single purpose ![](imgs/must.png) ##
 

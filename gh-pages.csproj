@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-precomposed.png" />
+    <None Include="CNAME" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -72,7 +73,10 @@
     <Content Include="imgs\note.png" />
     <Content Include="imgs\should.png" />
     <Content Include="index.html" />
+    <Content Include="js\base64.js" />
+    <Content Include="js\base64.min.js" />
     <Content Include="js\main.js" />
+    <Content Include="js\purl.js" />
     <Content Include="js\vendor\bootstrap.js" />
     <Content Include="js\vendor\bootstrap.min.js" />
     <Content Include="js\vendor\jquery-1.11.0.min.js" />
@@ -84,7 +88,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CNAME" />
     <Content Include="css\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap.css.map" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />

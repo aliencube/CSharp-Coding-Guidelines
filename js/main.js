@@ -2,12 +2,12 @@
 
 (function ($) {
     $(document).ready(function () {
-        var file = getCurrentPage();
+        var path = getCurrentPath();
         var lang = getLanguage();
 
         for (var i in pages) {
             var page = pages[i];
-            if (page.page == "index" || page.page == file) {
+            if (page.page == "index" || page.page == path) {
                 getMarkdown(page.doc, lang);
             }
 
@@ -43,13 +43,13 @@
         });
     });
 
-    // Gets the current page.
-    var getCurrentPage = function() {
+    // Gets the current path.
+    var getCurrentPath = function() {
         var path = $.url().attr("path");
         if (path == undefined || path == "/") {
             path = "index.html";
         }
-        return path;
+        return path.replace("/", "");
     };
 
     // Gets the language from the query string.

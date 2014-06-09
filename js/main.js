@@ -45,11 +45,11 @@
 
     // Gets the current page.
     var getCurrentPage = function() {
-        var page = $.url().attr("file");
-        if (page == undefined || !page.length) {
-            page = "index.html";
+        var path = $.url().attr("path");
+        if (path == undefined || path == "/") {
+            path = "index.html";
         }
-        return page;
+        return path;
     };
 
     // Gets the language from the query string.

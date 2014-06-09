@@ -7,7 +7,7 @@
 
         for (var i in pages) {
             var page = pages[i];
-            if (page.page == "index" || page.page == path) {
+            if (page.page == path) {
                 getMarkdown(page.doc, lang);
             }
 
@@ -47,7 +47,7 @@
     var getCurrentPath = function() {
         var path = $.url().attr("path");
         if (path == undefined || path == "/") {
-            path = "index.html";
+            path = "index";
         }
         return path.replace("/", "");
     };

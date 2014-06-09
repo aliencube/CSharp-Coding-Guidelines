@@ -69,6 +69,8 @@
     <Content Include="documentation-guidelines.html" />
     <Content Include="framework-guidelines.html" />
     <Content Include="imgs\favicon-500x500.png" />
+    <Content Include="js\history.js" />
+    <Content Include="js\history.min.js" />
     <Content Include="performance-guidelines.html" />
     <Content Include="naming-guidelines.html" />
     <Content Include="maintainability-guidelines.html" />

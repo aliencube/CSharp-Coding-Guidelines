@@ -11,6 +11,11 @@
         for (var i in pages) {
             var page = pages[i];
             if (page.page == path) {
+                if (page.page == "index") {
+                    $(".jumbotron").show();
+                } else {
+                    $(".jumbotron").hide();
+                }
                 getMarkdown(page.doc, lang);
             }
 
@@ -133,10 +138,13 @@
                 $("#main-content").html(data);
 
                 $("#main-content a[href^='?']").addClass("internal");
-                $("h1").each(function (i) {
+                $("#main-content a[href$='-']").each(function(i) {
+                    $(this).attr("href", $(this).attr("href").replace(/\-$/gi, ""));
+                });
+                $("h1").each(function(i) {
                     $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
                 });
-                $("h2").each(function (i) {
+                $("h2").each(function(i) {
                     $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
                 });
             });
@@ -158,9 +166,14 @@
             return;
         }
 
-        var path = href.substring(href.lastIndexOf("/") + 1);
+        var path = href.substring(href.lastIndexOf("/") + 1).replace("?", "");
         var page = getPage(path);
         if (page != undefined) {
+            if (page.page == "index") {
+                $(".jumbotron").show();
+            } else {
+                $(".jumbotron").hide();
+            }
             getMarkdown(page.doc, lang);
         }
     };
@@ -170,6 +183,8 @@
         var page = undefined;
         if (path == undefined) {
             return page;
+        } else if (path == "" || path == "/") {
+            path = "index";
         }
 
         for (var i in pages) {

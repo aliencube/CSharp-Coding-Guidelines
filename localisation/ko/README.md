@@ -1,39 +1,39 @@
 # 이 가이드라인에 대하여 About the Guidelines #
 
-The guidelines provide a practical way of developing .NET applications using C# 3.0 or later depending on versions that applications are using. The existing coding guidelines that **Aliencube** have been using were originally written in 2003 by [Mike Kruger](http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf). Many development environments, however, have a lot been evolved from that point of time. This document is based on [Dennis Doomen](http://www.dennisdoomen.net)'s [C# Coding Guidelines](http://csharpguidelines.codeplex.com) released on [Nov 26th, 2012](http://csharpguidelines.codeplex.com/releases/view/98254).
+이 가이드라인은 C# 3.0 혹은 그 이후 버전을 사용한 닷넷 어플리케이션을 개발하는데 있어 실용적인 방향을 제시합니다. **Aliencube**가 지금까지 사용해 왔던 가이드라인은 2003년에 [Mike Kruger](http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf)가 작성했던 것이었습니다. 하지만 현재에 이르러서는 그 당시의 개발 환경과는 많은 부분들이 발전해 왔습니다. 이 문서는 [Dennis Doomen](http://www.dennisdoomen.net)이 작성하여 [2012년 11월 26일](http://csharpguidelines.codeplex.com/releases/view/98254)에 배포한 [C# Coding Guidelines](http://csharpguidelines.codeplex.com)을 기초로 합니다.
 
 
 # 약간의 배경지식 History #
 
-Since Doomen's original document was written in MS-Word and released in PDF, which is hard to be maintainable, I made a decision to use plain markdown format for easy maintenance under the same license he originally set up. In addition to that, I got a permission to translate this into Korean, which will be provided soon.
+Doomen는 원본 문서를 MS워드 포맷으로 작성한 후 PDF 포맷으로 배포해 왔는데, 이 방식은 딱히 유지보수에 편리한 방법이 아닙니다. 그래서, 마크다운 포맷으로 바꾸어 Doomen이 배포한 것과 동일한 라이센스 아래 좀 더 쉽게 유지보수를 할 수 있게 바꾸었습니다. 거기에 더불어 이 문서는 한국어로도 번역할 수 있게끔 허락을 받았습니다.
 
 
 # 가이드라인을 만들게 된 계기 Rationale #
 
-Coding guidelines are sometimes overlooked since they are considered as putting some unwanted burdens on developers. However, it has already been proved to worth doing because not all developers:
+코딩 가이드라인이라 하면 종종 개발자에게 불필요한 부담으로 다가와서 간과하는 경우가 많습니다. 하지만, 가이드라인을 따르는 것이 중요한데 왜냐하면:
 
-* are aware that code is generally read 10 times more than it is changed;
-* are aware of the potential pitfalls of certain constructions in C#;
-* are introduced into certain conventions when using the .NET Framework such as `IDisposable` or the deferred execution nature of LINQ;
-* are aware of the impact of using (or neglecting to use) particular solutions on aspects like security, performance, multi-language support, etc; and
-* know that not every developer is as capable of understanding an elegant, but abstract, solution as the original developer.
+* 모든 개발자들이 코드의 변경사항을 10회 이상 읽는 것은 아니기 때문입니다.
+* 모든 개발자들이 C#으로 작성한 어떤 코드의 잠재적인 문제점을 속속들이 다 알고 있는 것은 아니기 때문입니다.
+* 모든 개발자들이 `IDisposable`과 같은 닷넷 프레임워크를 사용한다거나 LINQ가 갖는 "지연된 실행"의 속성들에 대해 어떤 관례들이 있는지 다 알고 있는 것은 아니기 때문입니다.
+* 모든 개발자들이 보안, 성능, 다국어 지원 등과 같은 특정 솔루션들을 사용한다거나 무시한다거나 할 때 미치는 결과에 대해 다 알고 있는 것은 아니기 때문입니다.
+* 마지막으로 모든 개발자들이 최초 개발자의 우아하지만 추상적인 솔루션에 대해 완벽한 이해를 할 수 있는 것은 아니기 때문입니다.
 
 
 # 가이드라인 기본 원칙 Basic Principles #
 
-In general, because this document cannot cover everything for each application's purpose, those two documents provided by Microsoft are the main starting points:
+이 문서가 각 어플리케이션들이 지향하는 바를 모두 커버할 수는 없기 때문에 일반적으로는 마이크로소프트에서 제공하는 아래 두 문서를 시작점으로 하여 개발을 진행합니다:
 
 * [C# Coding Conventions (C# Programming Guide)](http://msdn.microsoft.com/en-us/library/ff926074.aspx)
 * [Framework Design Guidelines](http://msdn.microsoft.com/en-us/library/ms229042.aspx)
 
-Those principles have already been applied to Visual Studio. So, using the default settings can check most of our coding conventions. [ReSharper](http://www.jetbrains.com/resharper) that we are using checks our code in a more robust way so following its default settings would be more efficient.
+이 원칙은 이미 비주얼 스튜디오에 기본값으로 지정되어 있습니다. 따라서 비주얼 스튜디오의 기본 설정값들을 그대로 사용하는 것은 거의 대부분의 코딩 관례들을 다 따른다고 볼 수 있습니다. 코드를 체크하기 위하여 [ReSharper](http://www.jetbrains.com/resharper) 를 사용하는 것은 조금 더 안정적인 방법이 될 수 있습니다. 이렇게 하면 기본 설정값을 사용하는 것만으로도 상당히 효과를 볼 수 있습니다.
 
-In addition to them, this document provides guidelines with the following principles:
+그에 덧붙여서 이 문서는 아래의 원칙들을 제안합니다:
 
-* **The Principle of Least Surprise** (or Astonishment) &ndash; you should choose a solution that does include any things people might not understand, or put on the wrong track.
-* **Keep It Simple Stupid** (KISS) &ndash; the simplest solution is more than sufficient.
-* **You Ain't Gonna Need It** (YAGNI) &ndash; you should create a solution for the current problem rather than the ones you think will happen later on (since when can you predict the future?).
-* **Don't Repeat Yourself** (DRY) &ndash; you are encouraged to prevent duplication in your code base without forgetting the [Rule of Three](http://lostechies.com/derickbailey/2012/10/31/abstraction-the-rule-of-three) heuristic.
+* **The Principle of Least Surprise** &ndash; 사람들이 잘못 이해하거나 엉뚱하게 행동할 수 있는 것들을 포함하지 않는 솔루션을 선택해야 합니다.
+* **Keep It Simple Stupid** (KISS) &ndash; 가장 단순한 솔루셔이면 충분합니다.
+* **You Ain't Gonna Need It** (YAGNI) &ndash; 현재 문제를 해결할 수 있는 솔루션이면 충분합니다. 굳이 나중에 발생할지 아닐지도 모르는 문제들을 위해 지금 고민할 필요는 없습니다.
+* **Don't Repeat Yourself** (DRY) &ndash; [Rule of Three](http://lostechies.com/derickbailey/2012/10/31/abstraction-the-rule-of-three) 원칙을 잊지 않게끔 코드의 중복을 예방해야 합니다.
 
 
 # 가이드라인 적용 방법 How to Apply #

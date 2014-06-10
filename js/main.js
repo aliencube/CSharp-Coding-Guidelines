@@ -3,6 +3,9 @@
 (function ($) {
     $(document).ready(function () {
         var path = getCurrentPath();
+        if (path == undefined || path == "404") {
+            location.href = "/404.html";
+        }
         var lang = getLanguage();
 
         for (var i in pages) {
@@ -21,9 +24,15 @@
         });
 
         $("a.internal").click(function () {
-            var href = $(this).attr("href");
-            history.pushState(null, null, href);
+            var url = $.url(this);
+
+            var relative = url.attr("relative");
+            history.pushState(null, null, relative);
+
+            var href = url.attr("query");
             getContents(href, lang);
+
+            var fragment = url.attr("fragment");
             return false;
         });
 
@@ -48,8 +57,33 @@
         var path = $.url().attr("path");
         if (path == undefined || path == "/") {
             path = "index";
+            var query = $.url().attr("query");
+            if (query != undefined && query.length) {
+                path = query;
+                if (!validatePage(path)) {
+                    path = "404";
+                }
+            }
         }
         return path.replace("/", "");
+    };
+
+    // Validates whether the path provide is valid or not.
+    var validatePage = function (path) {
+        if (path == undefined || !path.length) {
+            return false;
+        }
+
+        var validated = false;
+        for (var i in pages) {
+            var page = pages[i];
+            if (page.page != path) {
+                continue;
+            }
+            validated = true;
+            break;
+        }
+        return validated;
     };
 
     // Gets the language from the query string.
@@ -94,9 +128,10 @@
                 for (var i in pages) {
                     var doc = pages[i].doc;
                     var page = pages[i].page;
-                    data = data.replace(doc, page);
+                    data = data.replace(doc, "?" + page);
                 }
                 $("#main-content").html(data);
+                $("#main-content a[href^='?']").addClass("internal");
             });
     };
 
@@ -105,7 +140,7 @@
         if (page.page == "index") {
             return;
         }
-        var a = $("<a></a>").attr("href", page.page).addClass("internal").text(page.name);
+        var a = $("<a></a>").attr("href", "?" + page.page).addClass("internal").text(page.name);
         var li = $("<li></li>").append(a);
         $("#dropdown-menu").append(li);
     };

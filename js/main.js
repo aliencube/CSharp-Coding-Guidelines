@@ -131,7 +131,14 @@
                     data = data.replace(doc, "?" + page);
                 }
                 $("#main-content").html(data);
+
                 $("#main-content a[href^='?']").addClass("internal");
+                $("h1").each(function (i) {
+                    $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
+                });
+                $("h2").each(function (i) {
+                    $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
+                });
             });
     };
 

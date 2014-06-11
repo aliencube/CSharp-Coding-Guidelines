@@ -8,19 +8,10 @@
         }
         var lang = getLanguage();
 
-        for (var i in pages) {
-            var page = pages[i];
-            if (page.page == path) {
-                if (page.page == "index") {
-                    $(".jumbotron").show();
-                } else {
-                    $(".jumbotron").hide();
-                }
-                getMarkdown(page.doc, lang);
-            }
-
+        $.each(pages, function (i, page) {
+            getMarkdown(page, lang);
             getDropdown(page);
-        }
+        });
 
         $("#lang a").click(function () {
             $.cookie("lang", $(this).attr("href").replace("?lang=", ""));
@@ -30,14 +21,8 @@
 
         $("a.internal").click(function () {
             var url = $.url(this);
-
-            var relative = url.attr("relative");
-            history.pushState(null, null, relative);
-
-            var href = url.attr("query");
-            getContents(href, lang);
-
             var fragment = url.attr("fragment");
+            $("#" + fragment).animate({ "scrollTop": 50 }, "slow");
             return false;
         });
 
@@ -102,9 +87,9 @@
     };
 
     // Gets the given markdown page.
-    var getMarkdown = function (doc, lang) {
+    var getMarkdown = function (page, lang) {
         var localistion = lang != "en" ? "localisation/" + lang + "/" : "";
-        var url = "https://api.github.com/repos/aliencube/CSharp-Coding-Guidelines/contents/" + localistion + doc;
+        var url = "https://api.github.com/repos/aliencube/CSharp-Coding-Guidelines/contents/" + localistion + page.doc;
         $.ajax({
                 type: "GET",
                 url: url,
@@ -112,12 +97,12 @@
             })
             .done(function(data) {
                 var decoded = Base64.decode(data.content);
-                markdownToHtml(decoded);
+                markdownToHtml(page, decoded);
             });
     };
 
     // Converts the markdown to HTML and put them into the HTML element.
-    var markdownToHtml = function (markdown) {
+    var markdownToHtml = function (page, markdown) {
         var url = "https://api.github.com/markdown";
         var params = {
             "mode": "gfm",
@@ -132,19 +117,18 @@
             .done(function(data) {
                 for (var i in pages) {
                     var doc = pages[i].doc;
-                    var page = pages[i].page;
-                    data = data.replace(doc, "?" + page);
+                    data = data.replace(doc, "");
                 }
-                $("#main-content").html(data);
+                $("#main-content #section-" + page.page).html(data).append($("<hr />"));
 
-                $("#main-content a[href^='?']").addClass("internal");
-                $("#main-content a[href$='-']").each(function(i) {
+                $("#main-content #section-" + page.page + " a[href^='?']").addClass("internal");
+                $("#main-content #section-" + page.page + " a[href$='-']").each(function(i) {
                     $(this).attr("href", $(this).attr("href").replace(/\-$/gi, ""));
                 });
-                $("h1").each(function(i) {
+                $("#main-content #section-" + page.page + " h1").each(function(i) {
                     $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
                 });
-                $("h2").each(function(i) {
+                $("#main-content #section-" + page.page + " h2").each(function(i) {
                     $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
                 });
             });
@@ -155,7 +139,7 @@
         if (page.page == "index") {
             return;
         }
-        var a = $("<a></a>").attr("href", "?" + page.page).addClass("internal").text(page.name);
+        var a = $("<a></a>").attr("href", "#" + page.page).addClass("internal").text(page.name);
         var li = $("<li></li>").append(a);
         $("#dropdown-menu").append(li);
     };
@@ -169,12 +153,7 @@
         var path = href.substring(href.lastIndexOf("/") + 1).replace("?", "");
         var page = getPage(path);
         if (page != undefined) {
-            if (page.page == "index") {
-                $(".jumbotron").show();
-            } else {
-                $(".jumbotron").hide();
-            }
-            getMarkdown(page.doc, lang);
+            getMarkdown(page, lang);
         }
     };
 

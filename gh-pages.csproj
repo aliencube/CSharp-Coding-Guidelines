@@ -87,6 +87,10 @@
     <Content Include="js\base64.js" />
     <Content Include="js\base64.min.js" />
     <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.scrollTo.js" />
+    <Content Include="js\jquery.scrollTo.min.js" />
+    <Content Include="js\jstorage.js" />
+    <Content Include="js\jstorage.min.js" />
     <Content Include="js\variables.js" />
     <Content Include="js\main.js" />
     <Content Include="js\purl.js" />

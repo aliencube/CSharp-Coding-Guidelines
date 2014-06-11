@@ -9,8 +9,20 @@
         var lang = getLanguage();
 
         $.each(pages, function (i, page) {
-            getMarkdown(page, lang);
             getDropdown(page);
+
+            var contents = $.jStorage.get("contents");
+            if (contents == null) {
+                getMarkdown(page, lang);
+            } else {
+                $.each(contents, function(j, content) {
+                    if (content.page == page.page) {
+                        getContents(page, content.data);
+                    } else {
+                        getMarkdown(page, lang);
+                    }
+                });
+            }
         });
 
         $("#lang a").click(function () {
@@ -22,23 +34,8 @@
         $("a.internal").click(function () {
             var url = $.url(this);
             var fragment = url.attr("fragment");
-            $("#" + fragment).animate({ "scrollTop": 50 }, "slow");
+            $("body").scrollTo("#" + fragment, 500);
             return false;
-        });
-
-        $(window).on('popstate', function (e) {
-            /*
-            * Note, this is the only difference when using this library,
-            * because the object document.location cannot be overriden,
-            * so library the returns generated "location" object within
-            * an object window.history, so get it out of "history.location".
-            * For browsers supporting "history.pushState" get generated
-            * object "location" with the usual "document.location".
-            */
-            var returnLocation = history.location || document.location;
-
-            // here can cause data loading, etc.
-            getContents(returnLocation.href, lang);
         });
     });
 
@@ -86,6 +83,16 @@
         return lang;
     };
 
+    // Gets the dropdown menu link.
+    var getDropdown = function (page) {
+        if (page.page == "index") {
+            return;
+        }
+        var a = $("<a></a>").attr("href", "#" + page.page).addClass("internal").text(page.name);
+        var li = $("<li></li>").append(a);
+        $("#dropdown-menu").append(li);
+    };
+
     // Gets the given markdown page.
     var getMarkdown = function (page, lang) {
         var localistion = lang != "en" ? "localisation/" + lang + "/" : "";
@@ -115,64 +122,37 @@
                 dataType: "html"
             })
             .done(function(data) {
-                for (var i in pages) {
-                    var doc = pages[i].doc;
-                    data = data.replace(doc, "");
+                // Stores data into local storage.
+                var contents = $.jStorage.get("contents");
+                if (contents == null) {
+                    contents = [{ "page": page.page, "data": data }];
+                } else {
+                    contents.push({ "page": page.page, "data": data });
                 }
-                $("#main-content #section-" + page.page).html(data).append($("<hr />"));
+                $.jStorage.set("contents", contents);
+                $.jStorage.setTTL("contents", 60 * 60 * 1000);
 
-                $("#main-content #section-" + page.page + " a[href^='?']").addClass("internal");
-                $("#main-content #section-" + page.page + " a[href$='-']").each(function(i) {
-                    $(this).attr("href", $(this).attr("href").replace(/\-$/gi, ""));
-                });
-                $("#main-content #section-" + page.page + " h1").each(function(i) {
-                    $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
-                });
-                $("#main-content #section-" + page.page + " h2").each(function(i) {
-                    $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
-                });
+                getContents(page, data);
             });
     };
 
-    // Gets the dropdown menu link.
-    var getDropdown = function (page) {
-        if (page.page == "index") {
-            return;
-        }
-        var a = $("<a></a>").attr("href", "#" + page.page).addClass("internal").text(page.name);
-        var li = $("<li></li>").append(a);
-        $("#dropdown-menu").append(li);
-    };
-
-    // Gets the contents corresponding to the link, with history.pushState
-    var getContents = function(href, lang) {
-        if (href == undefined || !href.length) {
-            return;
-        }
-
-        var path = href.substring(href.lastIndexOf("/") + 1).replace("?", "");
-        var page = getPage(path);
-        if (page != undefined) {
-            getMarkdown(page, lang);
-        }
-    };
-
-    // Gets the page corresponding to the path.
-    var getPage = function (path) {
-        var page = undefined;
-        if (path == undefined) {
-            return page;
-        } else if (path == "" || path == "/") {
-            path = "index";
-        }
-
+    // Gets the contents.
+    var getContents = function(page, data) {
         for (var i in pages) {
-            if (pages[i].page != path) {
-                continue;
-            }
-            page = pages[i];
-            break;
+            var doc = pages[i].doc;
+            data = data.replace(doc, "");
         }
-        return page;
+        $("#main-content #section-" + page.page).html(data).append($("<hr />"));
+
+        $("#main-content #section-" + page.page + " a[href^='?']").addClass("internal");
+        $("#main-content #section-" + page.page + " a[href$='-']").each(function(i) {
+            $(this).attr("href", $(this).attr("href").replace(/\-$/gi, ""));
+        });
+        $("#main-content #section-" + page.page + " h1").each(function(i) {
+            $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
+        });
+        $("#main-content #section-" + page.page + " h2").each(function(i) {
+            $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
+        });
     };
 })(jQuery);

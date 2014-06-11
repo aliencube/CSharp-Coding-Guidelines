@@ -21,8 +21,8 @@
 
         $("a.internal").click(function () {
             var url = $.url(this);
-            var fragment = url.attr("fragment");
-            $("body").scrollTo("#" + fragment, 500);
+            var anchor = "#" + url.attr("fragment");
+            $("html, body").scrollTo(anchor, 500, { "offset": { "top": -50, "left": 0 } });
             return false;
         });
     });
@@ -76,9 +76,9 @@
         if (page.page == "index") {
             return;
         }
-        var a = $("<a></a>").attr("href", "#" + page.page).addClass("internal").text(page.name);
-        var li = $("<li></li>").append(a);
-        $("#dropdown-menu").append(li);
+        var $a = $("<a></a>").attr("href", "#" + page.page).addClass("internal").text(page.name);
+        var $li = $("<li></li>").append($a);
+        $("#dropdown-menu").append($li);
     };
 
     // Gets the given markdown page.
@@ -129,10 +129,10 @@
             $(this).attr("href", $(this).attr("href").replace(/\-$/gi, ""));
         });
         $("#main-content #section-" + page.page + " h1").each(function(i) {
-            $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
+            $(this).attr("id", $(this).text().trim().toLowerCase().replace(/ /gi, "-"));
         });
         $("#main-content #section-" + page.page + " h2").each(function(i) {
-            $(this).prepend($("<a></a>").attr("name", $(this).text().trim().toLowerCase().replace(/ /gi, "-")));
+            $(this).attr("id", $(this).text().trim().toLowerCase().replace(/ /gi, "-"));
         });
     };
 })(jQuery);

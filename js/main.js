@@ -10,19 +10,7 @@
 
         $.each(pages, function (i, page) {
             getDropdown(page);
-
-            var contents = $.jStorage.get("contents");
-            if (contents == null) {
-                getMarkdown(page, lang);
-            } else {
-                $.each(contents, function(j, content) {
-                    if (content.page == page.page) {
-                        getContents(page, content.data);
-                    } else {
-                        getMarkdown(page, lang);
-                    }
-                });
-            }
+            getMarkdown(page, lang);
         });
 
         $("#lang a").click(function () {
@@ -100,7 +88,8 @@
         $.ajax({
                 type: "GET",
                 url: url,
-                dataType: "json"
+                dataType: "json",
+                headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
             })
             .done(function(data) {
                 var decoded = Base64.decode(data.content);
@@ -119,19 +108,10 @@
                 type: "POST",
                 url: url,
                 data: JSON.stringify(params),
-                dataType: "html"
+                dataType: "html",
+                headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
             })
             .done(function(data) {
-                // Stores data into local storage.
-                var contents = $.jStorage.get("contents");
-                if (contents == null) {
-                    contents = [{ "page": page.page, "data": data }];
-                } else {
-                    contents.push({ "page": page.page, "data": data });
-                }
-                $.jStorage.set("contents", contents);
-                $.jStorage.setTTL("contents", 60 * 60 * 1000);
-
                 getContents(page, data);
             });
     };

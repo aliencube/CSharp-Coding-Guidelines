@@ -81,6 +81,7 @@
         $("#dropdown-menu").append($li);
     };
 
+    var count = 0;
     // Gets the given markdown page.
     var getMarkdown = function (page, lang) {
         var localistion = lang != "en" ? "localisation/" + lang + "/" : "";
@@ -94,6 +95,9 @@
             .done(function(data) {
                 var decoded = Base64.decode(data.content);
                 markdownToHtml(page, decoded);
+
+                count++;
+                getProgressbar((count / pages.length) * 100);
             });
     };
 
@@ -111,7 +115,7 @@
                 dataType: "html",
                 headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
             })
-            .done(function(data) {
+            .done(function (data) {
                 getContents(page, data);
             });
     };
@@ -134,5 +138,18 @@
         $("#main-content #section-" + page.page + " h2").each(function(i) {
             $(this).attr("id", $(this).text().trim().toLowerCase().replace(/ /gi, "-"));
         });
+    };
+
+    // Gets the progress bar.
+    var getProgressbar = function (progress) {
+        $(".progress-bar").attr("aria-valuenow", progress).css("width", progress + "%");
+        if (progress < 100) {
+            $("#main-content").hide();
+            $("#progress-bar").show();
+        } else {
+            $("#main-content").slideDown(function() {
+                $("#progress-bar").hide();
+            });
+        }
     };
 })(jQuery);

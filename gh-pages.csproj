@@ -68,8 +68,6 @@
     <Content Include="apple-touch-icon.png" />
     <Content Include="404.html" />
     <Content Include="imgs\favicon-500x500.png" />
-    <Content Include="js\history.js" />
-    <Content Include="js\history.min.js" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -89,8 +87,6 @@
     <Content Include="js\jquery.cookie.js" />
     <Content Include="js\jquery.scrollTo.js" />
     <Content Include="js\jquery.scrollTo.min.js" />
-    <Content Include="js\jstorage.js" />
-    <Content Include="js\jstorage.min.js" />
     <Content Include="js\variables.js" />
     <Content Include="js\main.js" />
     <Content Include="js\purl.js" />

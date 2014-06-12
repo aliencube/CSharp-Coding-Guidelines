@@ -1,14 +1,14 @@
-# 이 가이드라인에 대하여 About the Guidelines #
+# 이 가이드라인에 대하여 (About the Guidelines) #
 
 이 가이드라인은 C# 3.0 혹은 그 이후 버전을 사용한 닷넷 어플리케이션을 개발하는데 있어 실용적인 방향을 제시합니다. **Aliencube**가 지금까지 사용해 왔던 가이드라인은 2003년에 [Mike Kruger](http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf)가 작성했던 것이었습니다. 하지만 현재에 이르러서는 그 당시의 개발 환경과는 많은 부분들이 발전해 왔습니다. 이 문서는 [Dennis Doomen](http://www.dennisdoomen.net)이 작성하여 [2012년 11월 26일](http://csharpguidelines.codeplex.com/releases/view/98254)에 배포한 [C# Coding Guidelines](http://csharpguidelines.codeplex.com)을 기초로 합니다.
 
 
-# 약간의 배경지식 History #
+# 약간의 배경지식 (History) #
 
 Doomen는 원본 문서를 MS워드 포맷으로 작성한 후 PDF 포맷으로 배포해 왔는데, 이 방식은 딱히 유지보수에 편리한 방법이 아닙니다. 그래서, 마크다운 포맷으로 바꾸어 Doomen이 배포한 것과 동일한 라이센스 아래 좀 더 쉽게 유지보수를 할 수 있게 바꾸었습니다. 거기에 더불어 이 문서는 한국어로도 번역할 수 있게끔 허락을 받았습니다.
 
 
-# 가이드라인을 만들게 된 계기 Rationale #
+# 가이드라인을 만들게 된 계기 (Rationale) #
 
 코딩 가이드라인이라 하면 종종 개발자에게 불필요한 부담으로 다가와서 간과하는 경우가 많습니다. 하지만, 가이드라인을 따르는 것이 중요한데 왜냐하면:
 
@@ -19,7 +19,7 @@ Doomen는 원본 문서를 MS워드 포맷으로 작성한 후 PDF 포맷으로 
 * 마지막으로 모든 개발자들이 최초 개발자의 우아하지만 추상적인 솔루션에 대해 완벽한 이해를 할 수 있는 것은 아니기 때문입니다.
 
 
-# 가이드라인 기본 원칙 Basic Principles #
+# 가이드라인 기본 원칙 (Basic Principles) #
 
 이 문서가 각 어플리케이션들이 지향하는 바를 모두 커버할 수는 없기 때문에 일반적으로는 마이크로소프트에서 제공하는 아래 두 문서를 시작점으로 하여 개발을 진행합니다:
 
@@ -36,7 +36,7 @@ Doomen는 원본 문서를 MS워드 포맷으로 작성한 후 PDF 포맷으로 
 * **Don't Repeat Yourself** (DRY) &ndash; [Rule of Three](http://lostechies.com/derickbailey/2012/10/31/abstraction-the-rule-of-three) 원칙을 잊지 않게끔 코드의 중복을 예방해야 합니다.
 
 
-# 가이드라인 적용 방법 How to Apply #
+# 가이드라인 적용 방법 (How to Apply) #
 
 Developers are not forced to comply with this guidelines. However, they are encouraged to apply those guidelines. Each guideline is clearly labeled like:
 
@@ -47,7 +47,7 @@ Developers are not forced to comply with this guidelines. However, they are enco
 ![NOTE](imgs/note.png) The terms &ndash; `must`, `should` and `may` &ndash; are defined in [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt)
 
 
-# 유용한 정보들 Useful Resources #
+# 유용한 정보들 (Useful Resources) #
 
 In addition to the many links provided throughout this document, the following books, articles and sites for everyone interested in software quality are recommended:
 
@@ -76,7 +76,7 @@ A set of rules and recommendations that you should adhere to when creating your 
 The rationale and source of several of the new guidelines in this documented, written by [Jon Wagner](https://twitter.com/jonwagnerdotcom).
 
 
-# 목차 Table of Contents #
+# 목차 (Table of Contents) #
 
 * [Class Design Guidelines](Class.Design.Guidelines.md)
 * [Member Design Guidelines](Member.Design.Guidelines.md)
@@ -89,7 +89,7 @@ The rationale and source of several of the new guidelines in this documented, wr
 * [Layout Guidelines](Layout.Guidelines.md)
 
 
-# 라이센스 License #
+# 라이센스 (License) #
 
 This is released under **New BSD License** as its original distributor does.
 

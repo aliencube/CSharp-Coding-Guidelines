@@ -94,7 +94,7 @@
             })
             .done(function(data) {
                 var decoded = Base64.decode(data.content);
-                markdownToHtml(page, decoded);
+                markdownToHtml(page, lang, decoded);
 
                 count++;
                 getProgressbar((count / pages.length) * 100);
@@ -102,7 +102,7 @@
     };
 
     // Converts the markdown to HTML and put them into the HTML element.
-    var markdownToHtml = function (page, markdown) {
+    var markdownToHtml = function (page, lang, markdown) {
         var url = "https://api.github.com/markdown";
         var params = {
             "mode": "gfm",
@@ -116,12 +116,12 @@
                 headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
             })
             .done(function (data) {
-                getContents(page, data);
+                getContents(page, lang, data);
             });
     };
 
     // Gets the contents.
-    var getContents = function(page, data) {
+    var getContents = function(page, lang, data) {
         for (var i in pages) {
             var doc = pages[i].doc;
             data = data.replace(doc, "");
@@ -132,11 +132,21 @@
         $("#main-content #section-" + page.page + " a[href$='-']").each(function(i) {
             $(this).attr("href", $(this).attr("href").replace(/\-$/gi, ""));
         });
-        $("#main-content #section-" + page.page + " h1").each(function(i) {
+        $("#main-content #section-" + page.page + " h1").each(function (i) {
             $(this).attr("id", $(this).text().trim().toLowerCase().replace(/ /gi, "-"));
+            if (lang != "en") {
+                var pattern = "^.*\\(\(.+\)\\)$";
+                var re = new RegExp(pattern, "gi");
+                $(this).attr("id", $(this).attr("id").replace(re, "$1"));
+            }
         });
         $("#main-content #section-" + page.page + " h2").each(function(i) {
             $(this).attr("id", $(this).text().trim().toLowerCase().replace(/ /gi, "-"));
+            if (lang != "en") {
+                var pattern = "^.*\\(\(.+\)\\)$";
+                var re = new RegExp(pattern, "gi");
+                $(this).attr("id", $(this).attr("id").replace(re, "$1"));
+            }
         });
     };
 

@@ -20,9 +20,7 @@
         });
 
         $("a.internal").click(function () {
-            var url = $.url(this);
-            var anchor = "#" + url.attr("fragment");
-            $("html, body").scrollTo(anchor, 500, { "offset": { "top": -50, "left": 0 } });
+            getScrollTo(this);
             return false;
         });
     });
@@ -124,11 +122,20 @@
     var getContents = function(page, lang, data) {
         for (var i in pages) {
             var doc = pages[i].doc;
-            data = data.replace(doc, "");
+            if (page.page == "index") {
+                data = data.replace(doc, "#" + pages[i].page);
+            } else {
+                data = data.replace(doc, "");
+            }
         }
         $("#main-content #section-" + page.page).html(data).append($("<hr />"));
 
-        $("#main-content #section-" + page.page + " a[href^='?']").addClass("internal");
+        $("#main-content #section-" + page.page + " a[href^='#']")
+            .addClass("internal")
+            .on("click", function() {
+                getScrollTo(this);
+                return false;
+            });
         $("#main-content #section-" + page.page + " a[href$='-']").each(function(i) {
             $(this).attr("href", $(this).attr("href").replace(/\-$/gi, ""));
         });
@@ -161,5 +168,12 @@
                 $("#progress-bar").hide();
             });
         }
+    };
+
+    // Gets the smooth scroll.
+    var getScrollTo = function (element) {
+        var url = $.url(element);
+        var anchor = "#" + url.attr("fragment");
+        $("html, body").scrollTo(anchor, 500, { "offset": { "top": -50, "left": 0 } });
     };
 })(jQuery);

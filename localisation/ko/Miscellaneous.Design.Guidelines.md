@@ -1,4 +1,4 @@
-# 일반적인 사항 설계 가이드라인 Miscellaneous Design Guidelines #
+# 일반적인 사항 설계 가이드라인 (Miscellaneous Design Guidelines) #
 
 ## Throw exceptions rather than returning some kind of status value ![](imgs/should.png) ##
 

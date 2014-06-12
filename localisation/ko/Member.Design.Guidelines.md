@@ -1,4 +1,4 @@
-# 멤버 설계 가이드라인 Member Design Guidelines #
+# 멤버 설계 가이드라인 (Member Design Guidelines) #
 
 ## Allow properties to be set in any order ![](imgs/must.png) ##
 

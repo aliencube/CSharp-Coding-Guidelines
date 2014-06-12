@@ -1,4 +1,4 @@
-# 프레임워크 가이드라인 Framework Guidelines #
+# 프레임워크 가이드라인 (Framework Guidelines) #
 
 ## Use C# type aliases instead of the types from the `System` namespace ![](imgs/must.png) ##
 

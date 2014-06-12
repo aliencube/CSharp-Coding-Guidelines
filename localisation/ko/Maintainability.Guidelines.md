@@ -1,4 +1,4 @@
-# 유지보수성 가이드라인 Maintainability Guidelines #
+# 유지보수성 가이드라인 (Maintainability Guidelines) #
 
 ## Methods does not exceed 7 statements ![](imgs/must.png) ##
 

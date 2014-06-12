@@ -1,6 +1,6 @@
-# 레이아웃 가이드라인 Layout Guidelines #
+# 레이아웃 가이드라인 (Layout Guidelines) #
 
-## 일반적인 레이아웃 사용하기 Use a common layout ![](imgs/must.png) ##
+## 일반적인 레이아웃 사용하기 (Use a common layout) ![](imgs/must.png) ##
 
 * 각 줄의 길이는 130자 이내로 합니다.
 * 4 공백 들여쓰기를 사용하고, 탭을 사용하지 않습니다.
@@ -62,7 +62,7 @@ if (!String.IsNullOrEmpty(str) && (str != "new"))
   키워드의 주변, 다른 회사의 구분사용 사이에는 빈 줄을 넣습니다.
 
 
-## 회사에 따라 네임스페이스 정렬하고 그룹짓기 Order and group namespaces according the company ![](imgs/may.png) ##
+## 회사에 따라 네임스페이스 정렬하고 그룹짓기 (Order and group namespaces according the company) ![](imgs/may.png) ##
 
 ```c#
 // Microsoft namespaces are first
@@ -79,7 +79,7 @@ using Telerik.Ajax;
 ```
 
 
-## 멤버는 잘 배치하기 Place members in a well-defined order ![](imgs/must.png) ##
+## 멤버는 잘 배치하기 (Place members in a well-defined order) ![](imgs/must.png) ##
 
 일반적인 순서로 관리하면 다른 팀 멤버가 더 코드를 찾기 쉽게 합니다. 일반적으로,
 소스 파일은 책을 읽는것 처럼 위에서 아래로 읽을 수 있어야 합니다. 이렇게 하면
@@ -95,7 +95,7 @@ using Telerik.Ajax;
 8.	호출 순으로 기타 함수, private 프로퍼티
 
 
-## `#region`의 사용을 피하기 ![](imgs/must.png) ##
+## `#region`의 사용을 피하기 (Be reluctant with `#region`s) ![](imgs/must.png) ##
 
 `#region`은 도움이 될 수도 있지만, 클래스의 주요 목적을 숨길 수도 있습니다. 그러므로, `#region`은 다음의 경우에만 사용합시다.
 

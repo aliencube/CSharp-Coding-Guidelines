@@ -3,12 +3,12 @@
 The guidelines provide a practical way of developing .NET applications using C# 3.0 or later depending on versions that applications are using. The existing coding guidelines that **Aliencube** have been using were originally written in 2003 by [Mike Kruger](http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf). Many development environments, however, have a lot been evolved from that point of time. This document is based on [Dennis Doomen](http://www.dennisdoomen.net)'s [C# Coding Guidelines](http://csharpguidelines.codeplex.com) released on [Nov 26th, 2012](http://csharpguidelines.codeplex.com/releases/view/98254).
 
 
-# History #
+## History ##
 
 Since Doomen's original document was written in MS-Word and released in PDF, which is hard to be maintainable, I made a decision to use plain markdown format for easy maintenance under the same license he originally set up. In addition to that, I got a permission to translate this into Korean, which will be provided soon.
 
 
-# Rationale #
+## Rationale ##
 
 Coding guidelines are sometimes overlooked since they are considered as putting some unwanted burdens on developers. However, it has already been proved to worth doing because not all developers:
 
@@ -19,7 +19,7 @@ Coding guidelines are sometimes overlooked since they are considered as putting 
 * know that not every developer is as capable of understanding an elegant, but abstract, solution as the original developer.
 
 
-# Basic Principles #
+## Basic Principles ##
 
 In general, because this document cannot cover everything for each application's purpose, those two documents provided by Microsoft are the main starting points:
 
@@ -36,7 +36,7 @@ In addition to them, this document provides guidelines with the following princi
 * **Don't Repeat Yourself** (DRY) &ndash; you are encouraged to prevent duplication in your code base without forgetting the [Rule of Three](http://lostechies.com/derickbailey/2012/10/31/abstraction-the-rule-of-three) heuristic.
 
 
-# How to Apply #
+## How to Apply ##
 
 Developers are not forced to comply with this guidelines. However, they are encouraged to apply those guidelines. Each guideline is clearly labeled like:
 
@@ -47,7 +47,7 @@ Developers are not forced to comply with this guidelines. However, they are enco
 ![NOTE](imgs/note.png) The terms &ndash; `must`, `should` and `may` &ndash; are defined in [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt)
 
 
-# Useful Resources #
+## Useful Resources ##
 
 In addition to the many links provided throughout this document, the following books, articles and sites for everyone interested in software quality are recommended:
 

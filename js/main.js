@@ -8,10 +8,7 @@
         }
         var lang = getLanguage();
 
-        $.each(pages, function (i, page) {
-            getDropdown(page);
-            getMarkdown(page, lang);
-        });
+        getSha(lang);
 
         $("#lang a").click(function () {
             $.cookie("lang", $(this).attr("href").replace("?lang=", ""));
@@ -24,6 +21,24 @@
             return false;
         });
     });
+
+    var getSha = function(lang) {
+        var url = "https://githubapicache.apphb.com/api/ref/aliencube/CSharp-Coding-Guidelines/master";
+        $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
+            })
+            .done(function(data) {
+                var sha = data.object.sha;
+
+                $.each(pages, function (i, page) {
+                    getDropdown(page);
+                    getMarkdown(page, lang, sha);
+                });
+            });
+    };
 
     // Gets the current path.
     var getCurrentPath = function() {
@@ -81,40 +96,20 @@
 
     var count = 0;
     // Gets the given markdown page.
-    var getMarkdown = function (page, lang) {
+    var getMarkdown = function (page, lang, sha) {
         var localistion = lang != "en" ? "localisation/" + lang + "/" : "";
-        var url = "https://api.github.com/repos/aliencube/CSharp-Coding-Guidelines/contents/" + localistion + page.doc;
+        var url = gitcdn + "/" + sha + "/" + localistion + "/" + page.doc;
         $.ajax({
                 type: "GET",
                 url: url,
-                dataType: "json",
-                headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
+                dataType: "text"
             })
             .done(function(data) {
-                var decoded = Base64.decode(data.content);
-                markdownToHtml(page, lang, decoded);
+                data = marked(data);
+                getContents(page, lang, data);
 
                 count++;
                 getProgressbar((count / pages.length) * 100);
-            });
-    };
-
-    // Converts the markdown to HTML and put them into the HTML element.
-    var markdownToHtml = function (page, lang, markdown) {
-        var url = "https://api.github.com/markdown";
-        var params = {
-            "mode": "gfm",
-            "text": markdown
-        };
-        $.ajax({
-                type: "POST",
-                url: url,
-                data: JSON.stringify(params),
-                dataType: "html",
-                headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
-            })
-            .done(function (data) {
-                getContents(page, lang, data);
             });
     };
 

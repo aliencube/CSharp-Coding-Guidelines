@@ -1,5 +1,7 @@
 ; "use strict";
 
+var gitcdn = "https://cdn.rawgit.com/aliencube/CSharp-Coding-Guidelines";
+
 var pages = [
     { "page": "index", "name": "Home", "doc": "README.md" },
     { "page": "class-design-guidelines", "name": "Class Design Guidelines", "doc": "Class.Design.Guidelines.md" },

@@ -98,7 +98,7 @@
     // Gets the given markdown page.
     var getMarkdown = function (page, lang, sha) {
         var localistion = lang != "en" ? "localisation/" + lang + "/" : "";
-        var url = gitcdn + "/" + sha + "/" + localistion + "/" + page.doc;
+        var url = gitcdn + "/" + sha + "/" + localistion + page.doc;
         $.ajax({
                 type: "GET",
                 url: url,

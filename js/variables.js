@@ -1,5 +1,7 @@
 ; "use strict";
 
+var authKey = "fc1878f03ccb0ce54ca44e92964d700a32b9d070";
+var gitHubApiCacheUrl = "https://githubapicache.apphb.com";
 var gitcdn = "https://cdn.rawgit.com/aliencube/CSharp-Coding-Guidelines";
 
 var pages = [

@@ -23,12 +23,12 @@
     });
 
     var getSha = function(lang) {
-        var url = "https://githubapicache.apphb.com/api/ref/aliencube/CSharp-Coding-Guidelines/master";
+        var url = gitHubApiCacheUrl + "/repos/aliencube/CSharp-Coding-Guidelines/git/refs/heads/master";
         $.ajax({
                 type: "GET",
                 url: url,
                 dataType: "json",
-                headers: { "Authorization": "token fc1878f03ccb0ce54ca44e92964d700a32b9d070" }
+                headers: { "Authorization": "token " + authKey }
             })
             .done(function(data) {
                 var sha = data.object.sha;

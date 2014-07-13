@@ -22,8 +22,8 @@
         });
     });
 
-    var getSha = function(lang) {
-        var url = gitHubApiCacheUrl + "/repos/aliencube/CSharp-Coding-Guidelines/git/refs/heads/master";
+    var getSha = function (lang) {
+        var url = gitHubApiCacheUrl + "/api/ref/aliencube/CSharp-Coding-Guidelines/master";
         $.ajax({
                 type: "GET",
                 url: url,
